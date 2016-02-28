@@ -1,6 +1,6 @@
 gitbucket-docker
 ========
-GitBucket is an open-source GitHub clone powered by Scala.
+Docker image of GitBucket which is an open-source GitHub clone powered by Scala.
 
 How to use this image
 --------
