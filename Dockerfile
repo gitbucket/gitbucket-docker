@@ -2,7 +2,7 @@ FROM java:8-jre
 
 MAINTAINER Naoki Takezoe <takezoe [at] gmail.com>
 
-ADD https://github.com/gitbucket/gitbucket/releases/download/3.12/gitbucket.war /opt/gitbucket.war
+ADD https://github.com/gitbucket/gitbucket/releases/download/3.13/gitbucket.war /opt/gitbucket.war
 
 RUN ln -s /gitbucket /root/.gitbucket
 
