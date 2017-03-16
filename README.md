@@ -2,6 +2,8 @@ gitbucket-docker
 ========
 Docker image of GitBucket which is an open-source GitHub clone powered by Scala.
 
+[![Docker build](http://dockeri.co/image/takezoe/gitbucket)](https://registry.hub.docker.com/u/takezoe/gitbucket/)
+
 How to use this image
 --------
 
