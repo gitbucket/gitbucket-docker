@@ -1,6 +1,6 @@
 FROM java:8-jre
 
-MAINTAINER Naoki Takezoe <takezoe [at] gmail.com>
+LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
 
 ADD https://github.com/gitbucket/gitbucket/releases/download/4.31.2/gitbucket.war /opt/gitbucket.war
 
