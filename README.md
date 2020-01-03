@@ -23,9 +23,10 @@ You can also specify the data directory by `-v` option:
 docker run -d -p 8080:8080 -v `pwd`/gitbucket:/gitbucket gitbucket/gitbucket
 ```
 
-You can specify an uploadable file size using the environment variable (MAX_FILE_SIZE).
-To set 10MB, proceed as follows.
+You can configure GitBucket via environment variables. For example, the uploadable file size can be set to 10MB as follows:
 
 ```
-docker run -d -p 8080:8080 -e MAX_FILE_SIZE=10485760 gitbucket/gitbucket
+docker run -d -p 8080:8080 -e GITBUCKET_MAXFILESIZE=10485760 gitbucket/gitbucket
 ```
+
+See more details about how to configure GitBucket at: https://github.com/gitbucket/gitbucket/wiki/Basic-configurations
