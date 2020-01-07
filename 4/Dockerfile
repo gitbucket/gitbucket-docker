@@ -4,14 +4,22 @@ LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
 
 ADD https://github.com/gitbucket/gitbucket/releases/download/4.33.0/gitbucket.war /opt/gitbucket.war
 
-RUN ln -s /gitbucket /root/.gitbucket
+ENV GITBUCKET_HOME=/gitbucket
 
-VOLUME /gitbucket
+# Give permissions for root group
+RUN chmod g=u /opt/gitbucket.war && \
+    mkdir -p $GITBUCKET_HOME && \
+    chmod g+w $GITBUCKET_HOME
+
+VOLUME $GITBUCKET_HOME
+
 
 # Port for web page
 EXPOSE 8080
 # Port for SSH access to git repository (Optional)
 EXPOSE 29418
+
+USER 1001
 
 CMD ["sh", "-c", "java -jar /opt/gitbucket.war"]
 
