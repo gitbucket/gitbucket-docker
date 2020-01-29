@@ -8,10 +8,8 @@ RUN ln -s /gitbucket /root/.gitbucket
 
 VOLUME /gitbucket
 
-# Port for web page
-EXPOSE 8080
-# Port for SSH access to git repository (Optional)
-EXPOSE 29418
+# Port for web page and Port for SSH access to git repository (Optional)
+EXPOSE 8080 29418
 
 CMD ["sh", "-c", "java -jar /opt/gitbucket.war"]
 
