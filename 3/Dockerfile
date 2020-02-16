@@ -1,4 +1,4 @@
-FROM java:8-jre
+FROM openjdk:8-jre
 
 LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
 
