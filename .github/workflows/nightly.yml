@@ -38,13 +38,13 @@ jobs:
       with:
         path: docker
     
-    - name: Build docker
+    - name: Build Docker image
       run: |
         mv gitbucket/target/executable/gitbucket.war docker/gitbucket.war
         cd docker
         docker build . --file Dockerfile-nightly --tag gitbucket/gitbucket:nightly
         
-    - name: Push to Github Package Registry
+    - name: Push Docker image to Docker Hub
       run: |
         docker login -u gitbucket -p ${{ secrets.DOCKER_PASSWORD }}
         docker push gitbucket/gitbucket:nightly
