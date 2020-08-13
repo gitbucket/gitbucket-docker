@@ -2,6 +2,8 @@ name: default build
 
 on:
   push:
+    branches:
+      - master
     tags:        
       - '*'
 
