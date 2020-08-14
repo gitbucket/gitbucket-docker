@@ -12,4 +12,3 @@ VOLUME /gitbucket
 EXPOSE 8080 29418
 
 CMD ["sh", "-c", "java -jar /opt/gitbucket.war"]
-
