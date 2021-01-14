@@ -2,7 +2,7 @@ FROM openjdk:8-jre
 
 LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
 
-ADD https://github.com/gitbucket/gitbucket/releases/download/4.35.2/gitbucket.war /opt/gitbucket.war
+ADD https://github.com/gitbucket/gitbucket/releases/download/4.35.3/gitbucket.war /opt/gitbucket.war
 
 RUN ln -s /gitbucket /root/.gitbucket
 
