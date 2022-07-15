@@ -1,6 +1,4 @@
-FROM openjdk:8-jre
-
-LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
+FROM eclipse-temurin:17-jre
 
 ADD https://github.com/gitbucket/gitbucket/releases/download/4.37.2/gitbucket.war /opt/gitbucket.war
 
