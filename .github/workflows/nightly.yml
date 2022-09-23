@@ -13,7 +13,7 @@ jobs:
     steps:
     
     - name: Checkout GitBucket repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: gitbucket/gitbucket
         path: gitbucket
@@ -34,7 +34,7 @@ jobs:
         sbt executable
       
     - name: Check out the repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: docker
     
