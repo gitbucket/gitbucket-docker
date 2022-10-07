@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM adoptopenjdk:8-jre-hotspot
 
 LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
 
