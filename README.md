@@ -1,4 +1,4 @@
-gitbucket-docker ![default build](https://github.com/gitbucket/gitbucket-docker/workflows/default%20build/badge.svg) ![nightly build](https://github.com/gitbucket/gitbucket-docker/workflows/nightly%20build/badge.svg)
+gitbucket-docker [![default build](https://github.com/gitbucket/gitbucket-docker/actions/workflows/default.yml/badge.svg)](https://github.com/gitbucket/gitbucket-docker/actions/workflows/default.yml) [![nightly build](https://github.com/gitbucket/gitbucket-docker/actions/workflows/nightly.yml/badge.svg)](https://github.com/gitbucket/gitbucket-docker/actions/workflows/nightly.yml)
 ========
 Docker image of GitBucket which is an open source GitHub server powered by Scala
 
