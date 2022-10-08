@@ -33,6 +33,7 @@ jobs:
       run: |
         cd gitbucket
         sbt executable
+        mv target/executable/gitbucket.war docker/gitbucket.war
       
     - name: Check out the repo
       uses: actions/checkout@v3
@@ -51,7 +52,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        context: .
+        context: docker
         file: ./Dockerfile-nightly
         platforms: linux/amd64,linux/arm64
         push: true

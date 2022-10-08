@@ -2,7 +2,7 @@ FROM adoptopenjdk:8-jre-hotspot
 
 LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
 
-ADD gitbucket/target/executable/gitbucket.war /opt/gitbucket.war
+ADD gitbucket.war /opt/gitbucket.war
 
 RUN ln -s /gitbucket /root/.gitbucket
 
