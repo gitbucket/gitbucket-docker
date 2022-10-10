@@ -33,13 +33,16 @@ jobs:
       run: |
         cd gitbucket
         sbt executable
-        mv target/executable/gitbucket.war ../docker/gitbucket.war
 
     - name: Check out the repo
       uses: actions/checkout@v3
       with:
         path: docker
-    
+
+    - name: Copy war file
+      run: |
+        mv gitbucket/target/executable/gitbucket.war docker/gitbucket.war
+
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
     - name: Set up Docker Buildx
@@ -53,7 +56,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: docker
-        file: ./Dockerfile-nightly
+        file: docker/Dockerfile-nightly
         platforms: linux/amd64,linux/arm64
         push: true
         tags: |
