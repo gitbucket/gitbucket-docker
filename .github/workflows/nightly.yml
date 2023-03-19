@@ -11,53 +11,56 @@ jobs:
       matrix:
         java: [8]    
     steps:
-    
-    - name: Checkout GitBucket repo
-      uses: actions/checkout@v3
-      with:
-        repository: gitbucket/gitbucket
-        path: gitbucket
+      - name: Checkout GitBucket repo
+        uses: actions/checkout@v3
+        with:
+          repository: gitbucket/gitbucket
+          path: gitbucket
 
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        java-version: ${{ matrix.java }}
-        distribution: adopt
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: adopt
 
-    - name: Run tests
-      run: |
-        cd gitbucket
-        sbt scalafmtSbtCheck scalafmtCheck test:scalafmtCheck test
-      
-    - name: Build executable
-      run: |
-        cd gitbucket
-        sbt executable
+      - name: Run tests
+        run: |
+          cd gitbucket
+          sbt scalafmtSbtCheck scalafmtCheck test:scalafmtCheck test
+        
+      - name: Build executable
+        run: |
+          cd gitbucket
+          sbt executable
 
-    - name: Check out the repo
-      uses: actions/checkout@v3
-      with:
-        path: docker
+      - name: Check out the repo
+        uses: actions/checkout@v3
+        with:
+          path: docker
 
-    - name: Copy war file
-      run: |
-        mv gitbucket/target/executable/gitbucket.war docker/gitbucket.war
+      - name: Copy war file
+        run: |
+          mv gitbucket/target/executable/gitbucket.war docker/gitbucket.war
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-    - name: Login to DockerHub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build and push
-      uses: docker/build-push-action@v3
-      with:
-        context: docker
-        file: docker/Dockerfile-nightly
-        platforms: linux/amd64,linux/arm64
-        push: true
-        tags: |
-          gitbucket/gitbucket:nightly
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to GitHub Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: docker
+          file: docker/Dockerfile-nightly
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/gitbucket/gitbucket:nightly
