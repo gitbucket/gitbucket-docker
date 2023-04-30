@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [8]    
+        java: [11]
     steps:
       - name: Checkout GitBucket repo
         uses: actions/checkout@v3
