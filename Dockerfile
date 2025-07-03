@@ -2,7 +2,7 @@ FROM eclipse-temurin:17
 
 LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
 
-ADD https://github.com/gitbucket/gitbucket/releases/download/4.42.1/gitbucket.war /opt/gitbucket.war
+ADD https://github.com/gitbucket/gitbucket/releases/download/4.43.0/gitbucket.war /opt/gitbucket.war
 
 RUN ln -s /gitbucket /root/.gitbucket
 
