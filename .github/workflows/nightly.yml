@@ -23,6 +23,9 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: adopt
 
+      - name: Setup sbt launcher
+        uses: sbt/setup-sbt@v1
+
       - name: Run tests
         run: |
           cd gitbucket
