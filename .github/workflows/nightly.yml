@@ -23,18 +23,15 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: temurin
 
-      - name: Setup sbt launcher
-        uses: sbt/setup-sbt@v1
-
       - name: Run tests
         run: |
           cd gitbucket
-          sbt scalafmtSbtCheck scalafmtCheckAll test
+          ./sbt scalafmtSbtCheck scalafmtCheckAll test
         
       - name: Build executable
         run: |
           cd gitbucket
-          sbt executable
+          ./sbt executable
 
       - name: Check out the repo
         uses: actions/checkout@v7
