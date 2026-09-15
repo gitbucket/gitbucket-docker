@@ -1,0 +1,34 @@
+services:
+  gitbucket:
+    image: gitbucket/gitbucket
+    ports:
+      - 8080:8080
+      # Optional for SSH:
+      - 29418:29418
+    environment:
+      GITBUCKET_HOME: "~/.gitbucket"
+      GITBUCKET_CONNECTORS: "http"
+      # GITBUCKET_HOST: "example.com"
+      GITBUCKET_PORT: 8080
+      GITBUCKET_SECUREPORT: 8443
+      GITBUCKET_REDIRECTHTTPS: false
+      GITBUCKET_PREFIX: "/"
+      GITBUCKET_MAXFILESIZE: 4294967296
+      GITBUCKET_UPLOADTIMEOUT: 120000
+      GITBUCKET_JETTYIDLETIMEOUT: 600000
+      GITBUCKET_DB_URL: "jdbc:postgresql://postgres/gitbucket"
+      GITBUCKET_DB_USER: postgres
+      GITBUCKET_DB_PASSWORD: "thispasswordisnotsecure"
+      # GITBUCKET_BASE_URL: "example.com"
+  postgres:
+    image: postgres:14-alpine3.15
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "thispasswordisnotsecure"
+      POSTGRES_DB: "gitbucket"
+    ports:
+      - 5432:5432
+      #- 0.0.0.0:5432:5432
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
