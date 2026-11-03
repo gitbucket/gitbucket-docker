@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17
+FROM eclipse-temurin:25
 
 LABEL maintainer="Naoki Takezoe <takezoe [at] gmail.com>"
 
